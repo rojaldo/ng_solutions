@@ -4,13 +4,15 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { CalculatorComponent } from './components/calculator/calculator.component';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 @NgModule({
   declarations: [
     AppComponent,
     CalculatorComponent  
   ],
   imports: [
-    BrowserModule
+    BrowserModule, NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
