@@ -7,23 +7,18 @@ import { Hero } from 'src/app/model/hero';
   styleUrls: ['./heroes.component.scss']
 })
 export class HeroesComponent implements OnInit {
-  newHero = new Hero();
+
   heroes: Hero[] = [new Hero('Superman', 'Man of steel'),
   new Hero('Spiderman', 'Spidy'),
   new Hero('Batman', 'Dark knight')];
-  hero = '';
+
   constructor() { }
 
   ngOnInit() {
   }
 
-  addHero() {
-    this.heroes.push(new Hero(this.newHero.name, this.newHero.description));
-    this.newHero = new Hero();
-  }
-
-  disableButton(): boolean {
-    return(this.newHero.name === '')
+  addHero(hero: Hero) {
+    this.heroes.push(hero);
   }
 
   removeHero(heroIndex: number) {

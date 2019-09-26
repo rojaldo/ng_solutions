@@ -9,6 +9,8 @@ import { DisplayComponent } from './components/display/display.component';
 import { KeyboardComponent } from './components/keyboard/keyboard.component';
 import { FormsModule } from '@angular/forms';
 import { HeroesComponent } from './components/heroes/heroes.component';
+import { HeroFormComponent } from './components/hero-form/hero-form.component';
+import { HeroListComponent } from './components/hero-list/hero-list.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { HeroesComponent } from './components/heroes/heroes.component';
     CalculatorComponent,
     DisplayComponent,
     KeyboardComponent,
-    HeroesComponent  
+    HeroesComponent,
+    HeroFormComponent,
+    HeroListComponent  
   ],
   imports: [
     BrowserModule, NgbModule, FormsModule
