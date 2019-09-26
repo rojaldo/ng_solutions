@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CalculatorService } from 'src/app/services/calculator.service';
 
 @Component({
   selector: 'app-calculator',
@@ -9,13 +10,19 @@ export class CalculatorComponent implements OnInit {
   
   display = '';
 
-  constructor() { }
+  constructor(private service: CalculatorService) { }
 
   ngOnInit() {
   }
 
-  updateDisplay(myDisplay: string) {
-    this.display = myDisplay;
+  updateDisplay(newChar: any) {
+    if(typeof newChar === 'string') {
+      this.service.handleSymbol(newChar);
+      this.display = this.service.display;
+    }else if (typeof newChar === 'number'){
+      this.service.handleNumber(newChar);
+      this.display = this.service.display;
+    }
   }
 
 }
