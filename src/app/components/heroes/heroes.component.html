@@ -1,0 +1,13 @@
+<p>heroes works!</p>
+<div class="container">
+    <div class="form-group">
+      <label for=""></label>
+      <input type="text" [(ngModel)]="heroName" class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+      <small id="helpId" class="form-text text-muted">{{heroName}}</small>
+    </div>
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let hero of heroes">{{hero}}</li>
+    </ul>
+        
+</div>
+
