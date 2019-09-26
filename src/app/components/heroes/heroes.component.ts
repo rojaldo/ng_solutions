@@ -14,4 +14,9 @@ export class HeroesComponent implements OnInit {
   ngOnInit() {
   }
 
+  addHero(){
+    this.heroes.push(this.heroName); 
+    this.heroName='';
+  }
+
 }
