@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ShowApodComponent } from './components/show-apod/show-apod.component';
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 import { BeersComponent } from './components/beers/beers.component';
+import { Ng5SliderModule } from 'ng5-slider';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { BeersComponent } from './components/beers/beers.component';
     NgbModule, 
     FormsModule, 
     HttpClientModule, 
-    NgxYoutubePlayerModule.forRoot() 
+    NgxYoutubePlayerModule.forRoot(),
+    Ng5SliderModule 
   ],
   providers: [HeroService, CalculatorService, ApodService],
   bootstrap: [AppComponent]
