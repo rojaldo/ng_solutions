@@ -17,10 +17,7 @@ export class ApodComponent implements OnInit {
   }
 
   selectDate() {
-    this.yearArray = [];
-    for (let year = 2018; year > 1995; year--) {
-      this.yearArray.push({year: year, month: this.date.month, day: this.date.day})  
-    }
+      this.yearArray.push({year: this.date.year, month: this.date.month, day: this.date.day})  
   }
 
 }
