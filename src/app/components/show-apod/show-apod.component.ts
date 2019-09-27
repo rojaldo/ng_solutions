@@ -8,16 +8,10 @@ import { ApodService } from 'src/app/services/apod.service';
 })
 export class ShowApodComponent implements OnInit, OnChanges {
 
-  ngOnChanges(changes: import("@angular/core").SimpleChanges): void {
-    this.service.getRequest(this.date).subscribe(
-      (data) => this.processResult(data),
-      (error) => this.processError(error));
-
-  }
-
   @Input() date: any;
   result: any;
   id = 'qDuKsiwS5xw';
+  resolved = false;
   playerVars = {
     cc_lang_pref: 'en'
   };
@@ -31,8 +25,16 @@ export class ShowApodComponent implements OnInit, OnChanges {
       (error) => this.processError(error));
   }
 
+  ngOnChanges(changes: import("@angular/core").SimpleChanges): void {
+    this.resolved = false;
+    this.service.getRequest(this.date).subscribe(
+      (data) => this.processResult(data),
+      (error) => this.processError(error));
+  }
+
   processResult(data: any) {
     this.result = data;
+    this.resolved = true;
   }
 
   processError(error: any) {

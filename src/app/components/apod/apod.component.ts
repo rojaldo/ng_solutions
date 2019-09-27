@@ -9,10 +9,18 @@ import { ApodService } from 'src/app/services/apod.service';
 export class ApodComponent implements OnInit {
 
   date: any;
+  yearArray: any[] = [];
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  selectDate() {
+    this.yearArray = [];
+    for (let year = 2018; year > 1995; year--) {
+      this.yearArray.push({year: year, month: this.date.month, day: this.date.day})  
+    }
   }
 
 }
