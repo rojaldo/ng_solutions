@@ -5,69 +5,66 @@ enum State { InitState, FirstFigureState, SecondFigureState, ResultState };
 @Injectable()
 export class CalculatorService {
 
-  display = '';
-  currentState = State.InitState;
+  historic: Historic[] = [];
+  index = 0;
 
-  firstFigure = 0;
-  secondFigure = 0;
-  result = 0;
-  operator = '';
-
-  constructor() { }
+  constructor() {
+    this.historic.push(new Historic());
+  }
 
   handleNumber(myNumber: number) {
-    switch (this.currentState) {
+    console.log(this.historic.length);
+    
+    switch (this.historic[this.historic.length - 1].currentState) {
       case State.InitState:
-        this.firstFigure = myNumber;
-        this.display += myNumber;
-        this.currentState = State.FirstFigureState;
+        this.historic[this.historic.length - 1].firstFigure = myNumber;
+        this.historic[this.historic.length - 1].display += myNumber;
+        this.historic[this.historic.length - 1].currentState = State.FirstFigureState;
         break;
       case State.FirstFigureState:
-        this.firstFigure = this.firstFigure * 10 + myNumber;
-        this.display += myNumber;
+        this.historic[this.historic.length - 1].firstFigure = this.historic[this.historic.length - 1].firstFigure * 10 + myNumber;
+        this.historic[this.historic.length - 1].display += myNumber;
         break;
       case State.SecondFigureState:
-        this.secondFigure = this.secondFigure * 10 + myNumber;
-        this.display += myNumber;
+        this.historic[this.historic.length - 1].secondFigure = this.historic[this.historic.length - 1].secondFigure * 10 + myNumber;
+        this.historic[this.historic.length - 1].display += myNumber;
         break;
       case State.ResultState:
-        this.firstFigure = myNumber;
-        this.secondFigure = 0;
-        this.operator = '';
-        this.result = 0;
-        this.display = String(myNumber);
-        this.currentState = State.FirstFigureState;
+        this.historic.push(new Historic());
+        this.historic[this.historic.length - 1].firstFigure = myNumber;
+        this.historic[this.historic.length - 1].display = String(myNumber);
+        this.historic[this.historic.length - 1].currentState = State.FirstFigureState;
         break;
       default:
         break;
     }
   }
   handleSymbol(symbol: string) {
-    switch (this.currentState) {
+    switch (this.historic[this.historic.length - 1].currentState) {
       case State.InitState:
         break;
       case State.FirstFigureState:
         if (this.isOperator(symbol)) {
-          this.operator = symbol;
-          this.display += symbol;
-          this.currentState = State.SecondFigureState;
+          this.historic[this.historic.length - 1].operator = symbol;
+          this.historic[this.historic.length - 1].display += symbol;
+          this.historic[this.historic.length - 1].currentState = State.SecondFigureState;
         }
         break;
       case State.SecondFigureState:
         if (symbol === '=') {
-          this.result = this.resolve();
-          this.display = this.display + '=' + this.result;
-          this.currentState = State.ResultState;
+          this.historic[this.historic.length - 1].result = this.resolve();
+          this.historic[this.historic.length - 1].display = this.historic[this.historic.length - 1].display + '=' + this.historic[this.historic.length - 1].result;
+          this.historic[this.historic.length - 1].currentState = State.ResultState;
         }
         break;
       case State.ResultState:
-        if(this.isOperator(symbol)){
-          this.firstFigure = this.result;
-          this.secondFigure = 0;
-          this.operator = symbol;
-          this.result = 0;
-          this.display = this.firstFigure + symbol;
-          this.currentState = State.SecondFigureState;
+        if (this.isOperator(symbol)) {
+          const lastResult = this.historic[this.historic.length - 1].result;
+          this.historic.push(new Historic());
+          this.historic[this.historic.length - 1].firstFigure = lastResult;
+          this.historic[this.historic.length - 1].operator = symbol;
+          this.historic[this.historic.length - 1].display = this.historic[this.historic.length - 1].firstFigure + symbol;
+          this.historic[this.historic.length - 1].currentState = State.SecondFigureState;
         }
         break;
       default:
@@ -77,15 +74,15 @@ export class CalculatorService {
   }
 
   resolve(): number {
-    switch (this.operator) {
+    switch (this.historic[this.historic.length - 1].operator) {
       case '+':
-        return this.firstFigure + this.secondFigure;
+        return this.historic[this.historic.length - 1].firstFigure + this.historic[this.historic.length - 1].secondFigure;
       case '-':
-        return this.firstFigure - this.secondFigure;
+        return this.historic[this.historic.length - 1].firstFigure - this.historic[this.historic.length - 1].secondFigure;
       case '*':
-        return this.firstFigure * this.secondFigure;
+        return this.historic[this.historic.length - 1].firstFigure * this.historic[this.historic.length - 1].secondFigure;
       case '/':
-        return this.firstFigure / this.secondFigure;
+        return this.historic[this.historic.length - 1].firstFigure / this.historic[this.historic.length - 1].secondFigure;
       default:
         break;
     }
@@ -95,4 +92,13 @@ export class CalculatorService {
     return (symbol === '+' || symbol === '-' || symbol === '*' || symbol === '/')
   }
 
+}
+
+class Historic {
+  constructor(public display = '',
+    public currentState = State.InitState,
+    public firstFigure = 0,
+    public secondFigure = 0,
+    public result = 0,
+    public operator = '') { }
 }

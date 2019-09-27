@@ -1,2 +1,6 @@
 <app-display [content]="display"></app-display>
 <app-keyboard (signal)="updateDisplay($event)"></app-keyboard>
+<!-- {{this.service.historic | json}} -->
+<ul class="list-group">
+    <li class="list-group-item" *ngFor="let now of this.service.historic;let i = index" (click)="updateIndex(i)">{{now.display}}</li>
+</ul>
