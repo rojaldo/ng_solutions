@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class ApodService {
 
-  baseURL = 'https://api.nasa.gov/planetary/apod?api_key=tqz634Z1x0LiJzjbhSyUoExrZaGKLM0MG1VnROR6';
+  baseURL = 'https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY';
   
   constructor(private http: HttpClient) { }
 
