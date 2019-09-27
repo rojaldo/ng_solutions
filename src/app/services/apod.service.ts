@@ -11,11 +11,6 @@ export class ApodService {
 
   getRequest(date?: any): Observable<any> {
     if(date){
-      console.log(this.baseURL+
-        '&date=' + date.year +
-        '-' + date.month +
-        '-' + date.day);
-      
       return this.http.get(this.baseURL+
         '&date=' + date.year +
         '-' + date.month +

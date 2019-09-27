@@ -18,6 +18,7 @@ import { ApodService } from './services/apod.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ShowApodComponent } from './components/show-apod/show-apod.component';
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
+import { BeersComponent } from './components/beers/beers.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
     HeroFormComponent,
     HeroListComponent,
     ApodComponent,
-    ShowApodComponent  
+    ShowApodComponent,
+    BeersComponent  
   ],
   imports: [
     BrowserModule, 
