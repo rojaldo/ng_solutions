@@ -24,6 +24,7 @@ import { AlcoholPipe } from './pipes/alcohol.pipe';
 import { RangePipe } from './pipes/range.pipe';
 import { BeersListComponent } from './components/beers-list/beers-list.component';
 import {NgPipesModule} from 'ngx-pipes';
+import { CountriesComponent } from './components/countries/countries.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import {NgPipesModule} from 'ngx-pipes';
     BeersComponent,
     AlcoholPipe,
     RangePipe,
-    BeersListComponent  
+    BeersListComponent,
+    CountriesComponent  
   ],
   imports: [
     BrowserModule, 

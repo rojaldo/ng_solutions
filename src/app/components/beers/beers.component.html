@@ -6,15 +6,5 @@
     <div class="container-fluid m-3">
         <ng5-slider [(value)]="value" [(highValue)]="highValue" [options]="options"></ng5-slider>
     </div>
-    <span [ngSwitch]="order">
-    <p *ngSwitchCase="'name'">
-    <app-beers-list [beers]="beers | range: value: highValue | orderBy: 'name'"></app-beers-list>    
-    </p>
-    <p *ngSwitchCase="'abv'">
-            <app-beers-list [beers]="beers | range: value: highValue | orderBy: 'abv'"></app-beers-list>        
-    </p>
-    <p *ngSwitchDefault>
-            <app-beers-list [beers]="beers | range: value: highValue"></app-beers-list>        
-    </p>
-    </span>
+    <app-beers-list [beers]="beers | range: value: highValue | orderBy: order"></app-beers-list>    
 </div>
