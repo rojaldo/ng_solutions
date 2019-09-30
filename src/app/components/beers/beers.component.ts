@@ -18,6 +18,7 @@ export class BeersComponent implements OnInit {
     floor: 0,
     ceil: 60
   };
+  order = '';
 
   constructor(public service: BeersService) { }
 
@@ -48,4 +49,7 @@ export class BeersComponent implements OnInit {
     console.log(error);
   }
 
+  handleClick(key: string) {
+    this.order = key;
+  }
 }

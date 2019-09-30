@@ -1,22 +1,20 @@
 <div class="container">
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-primary" (click)="handleClick('name')">Order by name</button>
+        <button type="button" class="btn btn-primary" (click)="handleClick('abv')">Order by abv</button>
+    </div>
     <div class="container-fluid m-3">
-            <ng5-slider [(value)]="value" [(highValue)]="highValue" [options]="options"></ng5-slider>
+        <ng5-slider [(value)]="value" [(highValue)]="highValue" [options]="options"></ng5-slider>
     </div>
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4" *ngFor="let beer of beers | range: value: highValue">
-            <div class="card">
-                <div class="container-fluid text-center">
-                        <img class="card-img-top" [src]="beer.image_url" alt="" style="width: 60px">                    
-                </div>
-                <div class="card-body">
-                    <h4 class="card-title">{{beer.name | titlecase}}</h4>
-                    <p class="card-text">{{beer.description}}</p>
-                </div>
-                <div class="card-footer">{{beer.abv | alcohol}}</div>
-            </div>
-        </div>
-    </div>
-    
+    <span [ngSwitch]="order">
+    <p *ngSwitchCase="'name'">
+    <app-beers-list [beers]="beers | range: value: highValue | orderBy: 'name'"></app-beers-list>    
+    </p>
+    <p *ngSwitchCase="'abv'">
+            <app-beers-list [beers]="beers | range: value: highValue | orderBy: 'abv'"></app-beers-list>        
+    </p>
+    <p *ngSwitchDefault>
+            <app-beers-list [beers]="beers | range: value: highValue"></app-beers-list>        
+    </p>
+    </span>
 </div>
-
-<p>{{service.getRequest() | json}}</p>

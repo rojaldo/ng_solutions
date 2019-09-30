@@ -22,6 +22,8 @@ import { BeersComponent } from './components/beers/beers.component';
 import { Ng5SliderModule } from 'ng5-slider';
 import { AlcoholPipe } from './pipes/alcohol.pipe';
 import { RangePipe } from './pipes/range.pipe';
+import { BeersListComponent } from './components/beers-list/beers-list.component';
+import {NgPipesModule} from 'ngx-pipes';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { RangePipe } from './pipes/range.pipe';
     ShowApodComponent,
     BeersComponent,
     AlcoholPipe,
-    RangePipe  
+    RangePipe,
+    BeersListComponent  
   ],
   imports: [
     BrowserModule, 
@@ -44,7 +47,8 @@ import { RangePipe } from './pipes/range.pipe';
     FormsModule, 
     HttpClientModule, 
     NgxYoutubePlayerModule.forRoot(),
-    Ng5SliderModule 
+    Ng5SliderModule,
+    NgPipesModule 
   ],
   providers: [HeroService, CalculatorService, ApodService],
   bootstrap: [AppComponent]
