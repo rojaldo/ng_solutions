@@ -21,6 +21,7 @@ import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 import { BeersComponent } from './components/beers/beers.component';
 import { Ng5SliderModule } from 'ng5-slider';
 import { AlcoholPipe } from './pipes/alcohol.pipe';
+import { RangePipe } from './pipes/range.pipe';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { AlcoholPipe } from './pipes/alcohol.pipe';
     ApodComponent,
     ShowApodComponent,
     BeersComponent,
-    AlcoholPipe  
+    AlcoholPipe,
+    RangePipe  
   ],
   imports: [
     BrowserModule, 

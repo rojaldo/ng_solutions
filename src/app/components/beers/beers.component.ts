@@ -19,7 +19,7 @@ export class BeersComponent implements OnInit {
     ceil: 60
   };
 
-  constructor(private service: BeersService) { }
+  constructor(public service: BeersService) { }
 
   ngOnInit() {
     this.resolved = false;
@@ -30,7 +30,8 @@ export class BeersComponent implements OnInit {
 
   processResult(data: any) {
     this.result = data;
-    this.filterBeers();
+    // this.filterBeers();
+    this.beers = this.result;
     this.resolved = true;
   }
 

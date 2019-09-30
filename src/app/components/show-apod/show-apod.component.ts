@@ -17,7 +17,7 @@ export class ShowApodComponent implements OnInit, OnChanges {
   };
 
 
-  constructor(private service: ApodService) { }
+  constructor(public service: ApodService) { }
 
   ngOnInit() {
     this.service.getRequest(this.date).subscribe(

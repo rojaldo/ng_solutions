@@ -7,17 +7,19 @@ export class AlcoholPipe implements PipeTransform {
 
   transform(value: any, ...args: any[]): any {
     if (typeof value === 'number') {
-      if(args === undefined){
-        return value + 'º';
-      }else {
+      let entera = Math.floor(value);
+      let decimal= Math.round(10* (value - entera));
+
+      if (args.length === 0) {
+        return entera+','+decimal + 'º';
+      } else {
         if (args[0] === '%') {
-          return value + '%';
-        } else {
-          return value + 'º';
+          return entera+','+decimal + '% vol.';
         }
-      }  
+        return entera+','+decimal + 'º';
+      }
     } else {
-      console.error('PIPE alcohol: wrong type value');
+      console.error('PIPE Alcohol: wrong type value');
       return value;
     }
   }
