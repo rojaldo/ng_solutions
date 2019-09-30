@@ -13,6 +13,7 @@ export class CountriesComponent implements OnInit {
   resolved = false;
   result = [];
   countryName = '';
+  capitalName = '';
   countries: string[] = [];
 
   constructor(private service: CountriesService) { }
@@ -34,6 +35,15 @@ export class CountriesComponent implements OnInit {
 
   processError(error: any) {
     console.log(error);
+  }
+
+  handleKey() {
+    for (const country of this.result) {
+      if(country.name === this.countryName){
+        this.capitalName = country.capital;
+        break;
+      }
+    }
   }
 
   search = (text$: Observable<string>) =>

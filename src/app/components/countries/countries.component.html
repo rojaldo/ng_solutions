@@ -1,6 +1,7 @@
 <div class="container">
     <label for="typeahead-basic">Search for a country:</label>
-    <input id="typeahead-basic" type="text" class="form-control" [(ngModel)]="countryName" [ngbTypeahead]="search" />
+    <input #icountry id="typeahead-basic" type="text" class="form-control" [(ngModel)]="countryName" [ngbTypeahead]="search" (keyup)="handleKey()"/>
+    <input id="typeahead-basic" type="text" class="form-control"  [(ngModel)]="capitalName"/>
 </div>
 <hr>
 <p>{{result | json}}</p>
