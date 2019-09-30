@@ -20,6 +20,7 @@ import { ShowApodComponent } from './components/show-apod/show-apod.component';
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 import { BeersComponent } from './components/beers/beers.component';
 import { Ng5SliderModule } from 'ng5-slider';
+import { AlcoholPipe } from './pipes/alcohol.pipe';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { Ng5SliderModule } from 'ng5-slider';
     HeroListComponent,
     ApodComponent,
     ShowApodComponent,
-    BeersComponent  
+    BeersComponent,
+    AlcoholPipe  
   ],
   imports: [
     BrowserModule, 

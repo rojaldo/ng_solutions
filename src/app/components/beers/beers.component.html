@@ -9,10 +9,10 @@
                         <img class="card-img-top" [src]="beer.image_url" alt="" style="width: 60px">                    
                 </div>
                 <div class="card-body">
-                    <h4 class="card-title">{{beer.name}}</h4>
+                    <h4 class="card-title">{{beer.name | titlecase}}</h4>
                     <p class="card-text">{{beer.description}}</p>
                 </div>
-                <div class="card-footer">{{beer.abv}}%</div>
+                <div class="card-footer">{{beer.abv | alcohol: '%'}}</div>
             </div>
         </div>
     </div>
