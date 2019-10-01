@@ -11,11 +11,11 @@ export class FormComponent implements OnInit {
   myregex = /^[a-zA-Z]{2,5}$/;
   constructor() { }
   ngOnInit() {
-      this.user = new User('', '', '');
+    this.user = new User('', '', 0, '', '', 0, 0, '', '');
   }
   submitForm(form: any): void {
-      console.log('Form Data: ');
-      console.log(form);
-      // user.firstName = form.firstName
+    console.log('Form Data: ');
+    console.log(form);
+    // user.firstName = form.firstName
   }
 }

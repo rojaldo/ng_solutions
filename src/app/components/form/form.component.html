@@ -1,18 +1,53 @@
 <div class="jumbotron">
-        <h2>Template Driven Form</h2>
-        <form #form="ngForm" (ngSubmit)="submitForm(form.value)">
-            <div class="form-group">
-                <label>First Name:</label>
-                <input type="text" class="form-control" placeholder="John" #firstName="ngModel" name="firstName" [(ngModel)]="user.firstName" required [pattern]="myregex">
-                <div [hidden]="firstName.valid || firstName.pristine" class="alert alert-danger">First name is required</div>
-            </div>
-            <div class="form-group">
-                <label>Last Name</label>
-                <input type="text" class="form-control" placeholder="Doe" #lastName="ngModel" name="lastName" [(ngModel)]="user.lastName" required>
-                <div [hidden]="lastName.valid || lastName.pristine" class="alert alert-danger">Last name is required</div>
-            </div>
-            <!-- CONTINUA ... -->
-            <button type="submit" [disabled]="form.invalid" class="btn btn-default">Submit</button>
-        </form>
-     </div>
-     
+    <h2>Template Driven Form</h2>
+    <form #form="ngForm" (ngSubmit)="submitForm(form.value)">
+        <div class="form-group">
+            <label>First Name:</label>
+            <input type="text" class="form-control" placeholder="John" #firstName="ngModel" name="firstName" [(ngModel)]="user.firstName" required minlength="3" maxlength="6" pattern="[a-zA-Z]+">
+            <div [hidden]="firstName.valid || firstName.pristine" class="alert alert-danger">First name is required</div>
+        </div>
+        <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" class="form-control" placeholder="Doe" #lastName="ngModel" name="lastName" [(ngModel)]="user.lastName" required  minlength="3" maxlength="6" pattern="[a-zA-Z]+">
+            <div [hidden]="lastName.valid || lastName.pristine" class="alert alert-danger">Last name is required</div>
+        </div>
+        <div class="form-group">
+            <label>Age</label>
+            <input type="number" class="form-control" placeholder=" " #age="ngModel" name="age" [(ngModel)]="user.age" required min=0 max=120 pattern="([0-9]|[1-8][0-9]|9[0-9]|1[01][0-9]|120)">
+            <div [hidden]="age.valid || age.pristine" class="alert alert-danger">Age is required</div>
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="text" class="form-control" placeholder=" " #email="ngModel" name="email" [(ngModel)]="user.email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+            <div [hidden]="email.valid || email.pristine" class="alert alert-danger">Email is required</div>
+        </div>
+        <div class="form-group">
+            <label>Postal Code</label>
+            <input type="text" class="form-control" placeholder=" " #postalCode="ngModel" name="postalCode" [(ngModel)]="user.postalCode" required pattern="((0[1-9]|5[0-2])|[1-4][0-9])[0-9]{3}" maxlength="5">
+            <div [hidden]="postalCode.valid || postalCode.pristine" class="alert alert-danger">postalCode is required</div>
+        </div>
+        <div class="form-group">
+            <label>Mobile</label>
+            <input type="tel" class="form-control" placeholder=" " #mobile="ngModel" name="mobile" [(ngModel)]="user.mobile" required pattern="^[67]{1}[0-9]{8}$" maxlength="9">
+            <div [hidden]="mobile.valid || mobile.pristine" class="alert alert-danger">Mobile is required</div>
+        </div>
+        <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" class="form-control" placeholder=" " #phone="ngModel" name="phone" [(ngModel)]="user.phone" required pattern="^[9]{1}[0-9]{8}$" maxlength="9">
+            <div [hidden]="phone.valid || phone.pristine" class="alert alert-danger">Phone is required</div>
+        </div>
+        <div class="form-group">
+            <label>Login</label>
+            <input type="text" class="form-control" placeholder="" #login="ngModel" name="login" [(ngModel)]="user.login" required pattern="^[\w.-]{5,20}[0-9a-zA-Z]$">
+            <div [hidden]="login.valid || login.pristine" class="alert alert-danger">Login is required</div>
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="text" class="form-control" placeholder="" #password="ngModel" name="password" [(ngModel)]="user.password" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[-@#$!%*?&.])[A-Za-z\d-@$!%*?&.]{8,20}$">
+            <div [hidden]="password.valid || password.pristine" class="alert alert-danger">Password is required</div>
+        </div>
+        <button type="submit" [disabled]="form.invalid" class="btn btn-default">Submit</button>
+ 
+    </form>
+ </div>
+ 
