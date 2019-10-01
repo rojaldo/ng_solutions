@@ -7,7 +7,7 @@ import { CalculatorComponent } from './components/calculator/calculator.componen
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { DisplayComponent } from './components/display/display.component';
 import { KeyboardComponent } from './components/keyboard/keyboard.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeroesComponent } from './components/heroes/heroes.component';
 import { HeroFormComponent } from './components/hero-form/hero-form.component';
 import { HeroListComponent } from './components/hero-list/hero-list.component';
@@ -26,6 +26,7 @@ import { BeersListComponent } from './components/beers-list/beers-list.component
 import {NgPipesModule} from 'ngx-pipes';
 import { CountriesComponent } from './components/countries/countries.component';
 import { FormComponent } from './components/form/form.component';
+import { ReactiveFormComponent } from './components/reactive-form/reactive-form.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { FormComponent } from './components/form/form.component';
     RangePipe,
     BeersListComponent,
     CountriesComponent,
-    FormComponent  
+    FormComponent,
+    ReactiveFormComponent  
   ],
   imports: [
     BrowserModule, 
@@ -52,7 +54,8 @@ import { FormComponent } from './components/form/form.component';
     HttpClientModule, 
     NgxYoutubePlayerModule.forRoot(),
     Ng5SliderModule,
-    NgPipesModule 
+    NgPipesModule,
+    ReactiveFormsModule 
   ],
   providers: [HeroService, CalculatorService, ApodService],
   bootstrap: [AppComponent]

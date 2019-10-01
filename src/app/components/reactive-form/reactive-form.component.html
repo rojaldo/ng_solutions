@@ -1,0 +1,33 @@
+<div class="container" *ngIf="!post; else forminfo" novalidate>
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form">
+
+        <h1>FORMULARIO REACTIVO</h1>
+        <div> Login:</div>
+        <input placeholder="Login" formControlName="login">
+
+        <div [hidden]="!(!formGroup.controls['login'].valid && formGroup.controls['login'].touched)">
+            {{ getErrorLogin() }}
+        </div>
+
+
+        <div> Contraseña:</div>
+        <input matInput placeholder="Pass" formControlName="pass">
+        <div class="alert alert-primary" role="alert">
+            Contraseña cumpliendo un minimo de reglas
+        </div>
+        <div *ngIf="!formGroup.controls['pass'].valid && formGroup.controls['pass'].touched">
+            {{ getErrorPassword() }}
+        </div>
+
+        <div class="form-element">
+            <button type="submit" type="button" [disabled]="!formGroup.valid" class="btn btn-primary"> Submit</button>
+        </div>
+
+    </form>
+</div>
+
+<ng-template #forminfo>
+    <div class="container">
+        {{ post | json }}
+    </div>
+</ng-template>
