@@ -3,9 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable()
-export class BeersService {
+export class TrivialService {
 
-  baseURL = 'https://api.punkapi.com/v2/beers';
+  baseURL = 'https://opentdb.com/api.php?amount=10';
 
   constructor(private http: HttpClient) { }
 

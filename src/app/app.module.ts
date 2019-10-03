@@ -27,6 +27,10 @@ import { CountriesComponent } from './components/countries/countries.component';
 import { FormComponent } from './components/form/form.component';
 import { ReactiveFormComponent } from './components/reactive-form/reactive-form.component';
 import { Routing } from './routing/app.routing';
+import { TrivialComponent } from './components/trivial/trivial.component';
+import { TrivialService } from './services/trivial.service';
+import { BeersService } from './services/beers.service';
+import { CountriesService } from './services/countries.service';
 
 @NgModule({
   declarations: [
@@ -45,7 +49,8 @@ import { Routing } from './routing/app.routing';
     BeersListComponent,
     CountriesComponent,
     FormComponent,
-    ReactiveFormComponent  
+    ReactiveFormComponent,
+    TrivialComponent  
   ],
   imports: [
     BrowserModule, 
@@ -58,7 +63,7 @@ import { Routing } from './routing/app.routing';
     ReactiveFormsModule,
     Routing
   ],
-  providers: [HeroService, CalculatorService, ApodService],
+  providers: [HeroService, CalculatorService, ApodService, TrivialService, BeersService, CountriesService],
   exports:[],
   bootstrap: [AppComponent]
 })

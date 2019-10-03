@@ -6,8 +6,10 @@ import { CountriesComponent } from '.././components/countries/countries.componen
 import { FormComponent } from '.././components/form/form.component';
 import { ReactiveFormComponent } from '.././components/reactive-form/reactive-form.component';
 import { CalculatorComponent } from '.././components/calculator/calculator.component';
+import { TrivialComponent } from '../components/trivial/trivial.component';
+
 const APP_ROUTES: Routes = [
-    { path: '', redirectTo: 'calculator', pathMatch: 'full' },
+    { path: '', redirectTo: 'trivial', pathMatch: 'full' },
     { path: 'calculator', component: CalculatorComponent },
     { path: 'apod', component: ApodComponent },
     { path: 'heroes', component: HeroesComponent },
@@ -15,6 +17,7 @@ const APP_ROUTES: Routes = [
     { path: 'countries', component: CountriesComponent },
     { path: 'form', component: FormComponent },
     { path: 'reactive', component: ReactiveFormComponent },
+    { path: 'trivial', component: TrivialComponent }
 ];
 
 export const Routing = RouterModule.forRoot(APP_ROUTES);
