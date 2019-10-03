@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { CalculatorComponent } from './components/calculator/calculator.component';
-
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { DisplayComponent } from './components/display/display.component';
 import { KeyboardComponent } from './components/keyboard/keyboard.component';
@@ -27,6 +26,7 @@ import {NgPipesModule} from 'ngx-pipes';
 import { CountriesComponent } from './components/countries/countries.component';
 import { FormComponent } from './components/form/form.component';
 import { ReactiveFormComponent } from './components/reactive-form/reactive-form.component';
+import { Routing } from './routing/app.routing';
 
 @NgModule({
   declarations: [
@@ -55,9 +55,11 @@ import { ReactiveFormComponent } from './components/reactive-form/reactive-form.
     NgxYoutubePlayerModule.forRoot(),
     Ng5SliderModule,
     NgPipesModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule,
+    Routing
   ],
   providers: [HeroService, CalculatorService, ApodService],
+  exports:[],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

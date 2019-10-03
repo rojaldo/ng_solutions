@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CountriesService } from 'src/app/services/countries.service';
 import { Observable } from 'rxjs';
 import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-countries',
@@ -16,13 +17,17 @@ export class CountriesComponent implements OnInit {
   capitalName = '';
   countries: string[] = [];
 
-  constructor(private service: CountriesService) { }
+  constructor(private service: CountriesService, private router: Router) { }
 
   ngOnInit() {
     this.resolved = false;
     this.service.getRequest().subscribe(
       (data) => this.processResult(data),
       (error) => this.processError(error));
+  }
+
+  handleClick() {
+    this.router.navigate(['calculator']);
   }
 
   processResult(data: any) {
