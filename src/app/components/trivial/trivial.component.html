@@ -1,14 +1,9 @@
 <div class="container">
-    
+
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4" *ngFor="let card of cards">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title" [innerHTML]="card.question"></h4>
-                    <button type="button" class="btn btn-primary btn-block" [disabled]="true" disabled *ngFor="let answer of card.answers" [innerHTML]="answer"></button>
-                </div>
-            </div>
+            <app-trivial-card [card]="card"></app-trivial-card>
         </div>
     </div>
-    
+
 </div>

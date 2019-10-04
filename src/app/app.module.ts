@@ -31,6 +31,7 @@ import { TrivialComponent } from './components/trivial/trivial.component';
 import { TrivialService } from './services/trivial.service';
 import { BeersService } from './services/beers.service';
 import { CountriesService } from './services/countries.service';
+import { TrivialCardComponent } from './components/trivial-card/trivial-card.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { CountriesService } from './services/countries.service';
     CountriesComponent,
     FormComponent,
     ReactiveFormComponent,
-    TrivialComponent  
+    TrivialComponent,
+    TrivialCardComponent  
   ],
   imports: [
     BrowserModule, 
@@ -63,8 +65,12 @@ import { CountriesService } from './services/countries.service';
     ReactiveFormsModule,
     Routing
   ],
-  providers: [HeroService, CalculatorService, ApodService, TrivialService, BeersService, CountriesService],
-  exports:[],
+  providers: [HeroService, 
+    CalculatorService, 
+    ApodService, 
+    TrivialService, 
+    BeersService, 
+    CountriesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
