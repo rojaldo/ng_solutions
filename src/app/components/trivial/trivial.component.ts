@@ -12,14 +12,12 @@ export class TrivialComponent implements OnInit {
   resolved = false;
   response: any = {};
   cards: Card[] = [];
+  score = 0;
 
   constructor(private service: TrivialService) { }
 
   ngOnInit() {
-    this.resolved = false;
-    this.service.getRequest().subscribe(
-      (data) => this.processResult(data),
-      (error) => this.processError(error));
+    this.doRequest();
   }
 
   processResult(data: any) {
@@ -32,6 +30,25 @@ export class TrivialComponent implements OnInit {
 
   processError(error: any) {
     console.log(error);
+  }
+
+  handleAnswer(rightAnswered: boolean) {
+    if(rightAnswered) {
+      this.score += 2;
+    }else {
+      this.score -= 1;
+    }
+  }
+
+  doRequest() {
+    this.resolved = false;
+    this.service.getRequest().subscribe(
+      (data) => this.processResult(data),
+      (error) => this.processError(error));
+  }
+
+  onScroll() {
+    this.doRequest();
   }
 
 }

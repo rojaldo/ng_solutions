@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Card } from 'src/app/model/card';
 
 @Component({
@@ -9,9 +9,10 @@ import { Card } from 'src/app/model/card';
 export class TrivialCardComponent implements OnInit {
 
   @Input() card: Card;
+  @Output() rightAnswered = new EventEmitter<boolean>();
   classesArray: string[] = [];
 
-  constructor() { 
+  constructor() {
   }
 
   ngOnInit() {
@@ -24,21 +25,21 @@ export class TrivialCardComponent implements OnInit {
   handleClick(buttonIndex: number) {
     this.card.responded = true;
     this.card.respondedIndex = buttonIndex;
-    if(this.card.correctAnswer === this.card.answers[buttonIndex]) {
-      this.card.rightAnswered = true;
-    }
+    this.card.rightAnswered = (this.card.correctAnswer === this.card.answers[buttonIndex]);
+    this.rightAnswered.emit(this.card.rightAnswered);
+
     for (let index = 0; index < this.classesArray.length; index++) {
       this.classesArray[index] = this.getClass(index);
     }
   }
 
   getClass(index: number) {
-    if(this.card.responded === false ){
+    if (this.card.responded === false) {
       return 'btn btn-primary btn-block';
-    }else {
+    } else {
       if (this.card.answers[index] === this.card.correctAnswer) {
-        return 'btn btn-success btn-block';  
-      }else if (index === this.card.respondedIndex && !this.card.rightAnswered){
+        return 'btn btn-success btn-block';
+      } else if (index === this.card.respondedIndex && !this.card.rightAnswered) {
         return 'btn btn-danger btn-block';
       }
       return 'btn btn-secondary btn-block';

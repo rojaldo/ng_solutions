@@ -32,7 +32,7 @@ import { TrivialService } from './services/trivial.service';
 import { BeersService } from './services/beers.service';
 import { CountriesService } from './services/countries.service';
 import { TrivialCardComponent } from './components/trivial-card/trivial-card.component';
-
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,7 +63,8 @@ import { TrivialCardComponent } from './components/trivial-card/trivial-card.com
     Ng5SliderModule,
     NgPipesModule,
     ReactiveFormsModule,
-    Routing
+    Routing,
+    InfiniteScrollModule
   ],
   providers: [HeroService, 
     CalculatorService, 
